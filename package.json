@@ -1,6 +1,6 @@
 {
   "name": "pad-stream",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Pad each line in a stream",
   "license": "MIT",
   "repository": "sindresorhus/pad-stream",
