@@ -8,7 +8,7 @@ module.exports = function (indent, count) {
 	indent = indent || ' ';
 	count = typeof count === 'number' ? count : 1;
 
-	return pumpify([split(), through(function (data, enc, cb) {
+	return pumpify(split(), through(function (data, enc, cb) {
 		cb(null, repeating(indent, count) + data + '\n');
-	})]);
+	}));
 };
