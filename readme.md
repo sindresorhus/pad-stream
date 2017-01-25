@@ -14,9 +14,9 @@ $ npm install --save pad-stream
 
 ```js
 // pad.js
-var padStream = require('pad-stream');
+const padStream = require('pad-stream');
 
-process.stdin.pipe(padStream('>', 2)).pipe(process.stdout);
+process.stdin.pipe(padStream(2, '>')).pipe(process.stdout);
 ```
 
 ```
@@ -28,49 +28,30 @@ $ echo 'foo\nbar' | node pad.js
 
 ## API
 
-### padStream([indent], [count])
+### padStream(count, [indent])
 
-Returns a [transform stream](http://nodejs.org/api/stream.html#stream_class_stream_transform_1).
+Returns a [transform stream](https://nodejs.org/api/stream.html#stream_duplex_and_transform_streams).
+
+#### count
+
+Type: `number` *(integer)*
+
+Number of times to repeat `indent`.
 
 #### indent
 
-Type: `string`  
+Type: `string`<br>
 Default: `' '`
 
 String to use as indent.
 
-#### count
 
-Type: `number`  
-Default: `1`
+## Related
 
-Number of times to repeat `indent`.
-
-
-## CLI
-
-```
-$ npm install --global pad-stream
-```
-
-```
-$ pad --help
-
-  Usage
-    pad <filename>
-    echo <text> | pad
-
-  Example
-    echo 'foo\nbar' | pad --count=4
-        foo
-        bar
-
-  Options
-    --indent  Indent string
-    --count   Times to repeat indent string
-```
+- [indent-string](https://github.com/sindresorhus/indent-string) - Indent each line in a string
+- [indent-string-cli](https://github.com/sindresorhus/indent-string-cli) - Indent each line in some text or stdin
 
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)

@@ -1,14 +1,16 @@
 'use strict';
-var split = require('split2');
-var through = require('through2');
-var pumpify = require('pumpify');
-var repeating = require('repeating');
+const split = require('split2');
+const through = require('through2');
+const pumpify = require('pumpify');
 
-module.exports = function (indent, count) {
-	indent = indent || ' ';
-	count = typeof count === 'number' ? count : 1;
+module.exports = (count, indent) => {
+	if (!Number.isSafeInteger(count)) {
+		throw new TypeError(`Expected \`count\` to be a integer, got \`${count}\` (${typeof count})`);
+	}
 
-	return pumpify(split(), through(function (data, enc, cb) {
-		cb(null, repeating(indent, count) + data + '\n');
+	indent = typeof indent === 'string' ? indent : ' ';
+
+	return pumpify(split(), through((data, enc, cb) => {
+		cb(null, indent.repeat(count) + data + '\n');
 	}));
 };

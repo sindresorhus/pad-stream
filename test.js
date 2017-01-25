@@ -1,21 +1,21 @@
-'use strict';
-var test = require('ava');
-var stringToStream = require('string-to-stream');
-var concatStream = require('concat-stream');
-var padStream = require('./');
+import test from 'ava';
+import intoStream from 'into-stream';
+import getStream from 'get-stream';
+import m from '.';
 
-test('pad', function (t) {
-	t.plan(1);
+const fixture = 'foo\nbar';
 
-	stringToStream('foo\nbar').pipe(padStream(' ')).pipe(concatStream(function (data) {
-		t.assert(data.toString() === ' foo\n bar\n');
-	}));
+test('pad', async t => {
+	const ret = await getStream(intoStream(fixture).pipe(m(1)));
+	t.is(ret, ' foo\n bar\n');
 });
 
-test('options', function (t) {
-	t.plan(1);
+test('count 0', async t => {
+	const ret = await getStream(intoStream(fixture).pipe(m(0)));
+	t.is(ret, 'foo\nbar\n');
+});
 
-	stringToStream('foo\nbar').pipe(padStream('@@', 2)).pipe(concatStream(function (data) {
-		t.assert(data.toString() === '@@@@foo\n@@@@bar\n');
-	}));
+test('options', async t => {
+	const ret = await getStream(intoStream(fixture).pipe(m(2, '@@')));
+	t.is(ret, '@@@@foo\n@@@@bar\n');
 });
