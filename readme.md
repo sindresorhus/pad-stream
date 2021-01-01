@@ -1,4 +1,4 @@
-# pad-stream [![Build Status](https://travis-ci.org/sindresorhus/pad-stream.svg?branch=master)](https://travis-ci.org/sindresorhus/pad-stream)
+# pad-stream
 
 > Pad each line in a stream
 
