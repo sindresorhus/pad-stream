@@ -1,5 +1,5 @@
 import split from 'split2';
-import through from 'through2';
+import transformStream from 'easy-transform-stream';
 import pumpify from 'pumpify';
 
 export default function padStream(count, indent) {
@@ -9,7 +9,8 @@ export default function padStream(count, indent) {
 
 	indent = typeof indent === 'string' ? indent : ' ';
 
-	return pumpify(split(), through((data, enc, callback) => {
-		callback(null, indent.repeat(count) + data + '\n');
-	}));
+	return pumpify(
+		split(),
+		transformStream(chunk => indent.repeat(count) + chunk + '\n'),
+	);
 }

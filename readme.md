@@ -4,8 +4,8 @@
 
 ## Install
 
-```
-$ npm install pad-stream
+```sh
+npm install pad-stream
 ```
 
 ## Usage
@@ -33,14 +33,14 @@ Returns a [transform stream](https://nodejs.org/api/stream.html#stream_duplex_an
 
 Type: `number` *(integer)*
 
-Number of times to repeat `indent`.
+The number of times to repeat `indent`.
 
 #### indent
 
 Type: `string`\
 Default: `' '`
 
-String to use as indent.
+The string to use as indent.
 
 ## Related
 
