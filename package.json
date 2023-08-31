@@ -37,12 +37,12 @@
 	"dependencies": {
 		"easy-transform-stream": "^1.0.0",
 		"pumpify": "^2.0.1",
-		"split2": "^4.1.0"
+		"split2": "^4.2.0"
 	},
 	"devDependencies": {
-		"ava": "^4.3.1",
-		"get-stream": "^6.0.1",
-		"into-stream": "^7.0.0",
-		"xo": "^0.51.0"
+		"ava": "^5.3.1",
+		"get-stream": "^8.0.1",
+		"into-stream": "^8.0.0",
+		"xo": "^0.56.0"
 	}
 }
